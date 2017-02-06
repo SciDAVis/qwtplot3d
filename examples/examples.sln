@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "autoswitch", "autoswitch\autoswitch.vcproj", "{C925FD16-FB8D-3C0C-A955-78E37532F05B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "axes", "axes\axes.vcproj", "{9DBB316E-B662-37E5-81FA-F07D1AD5DBF3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "enrichments", "enrichments\enrichments.vcproj", "{DE9FA224-88EA-3A55-B709-A679DE8B943D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mesh2", "mesh2\mesh2.vcproj", "{8001AE3F-B159-3472-A7B5-E866065C22AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qwtplot3d", "..\qwtplot3d.vcproj", "{FCF9D3F3-79A6-3A08-92BE-6DAE29ADC6A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simpleplot", "simpleplot\simpleplot.vcproj", "{A81FCC17-CCAB-3CEC-9A30-C8F9EDD6F0D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C925FD16-FB8D-3C0C-A955-78E37532F05B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C925FD16-FB8D-3C0C-A955-78E37532F05B}.Debug|Win32.Build.0 = Debug|Win32
+		{C925FD16-FB8D-3C0C-A955-78E37532F05B}.Release|Win32.ActiveCfg = Release|Win32
+		{9DBB316E-B662-37E5-81FA-F07D1AD5DBF3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9DBB316E-B662-37E5-81FA-F07D1AD5DBF3}.Debug|Win32.Build.0 = Debug|Win32
+		{9DBB316E-B662-37E5-81FA-F07D1AD5DBF3}.Release|Win32.ActiveCfg = Release|Win32
+		{DE9FA224-88EA-3A55-B709-A679DE8B943D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE9FA224-88EA-3A55-B709-A679DE8B943D}.Debug|Win32.Build.0 = Debug|Win32
+		{DE9FA224-88EA-3A55-B709-A679DE8B943D}.Release|Win32.ActiveCfg = Release|Win32
+		{8001AE3F-B159-3472-A7B5-E866065C22AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8001AE3F-B159-3472-A7B5-E866065C22AE}.Debug|Win32.Build.0 = Debug|Win32
+		{8001AE3F-B159-3472-A7B5-E866065C22AE}.Release|Win32.ActiveCfg = Release|Win32
+		{FCF9D3F3-79A6-3A08-92BE-6DAE29ADC6A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FCF9D3F3-79A6-3A08-92BE-6DAE29ADC6A5}.Debug|Win32.Build.0 = Debug|Win32
+		{FCF9D3F3-79A6-3A08-92BE-6DAE29ADC6A5}.Release|Win32.ActiveCfg = Release|Win32
+		{A81FCC17-CCAB-3CEC-9A30-C8F9EDD6F0D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A81FCC17-CCAB-3CEC-9A30-C8F9EDD6F0D3}.Debug|Win32.Build.0 = Debug|Win32
+		{A81FCC17-CCAB-3CEC-9A30-C8F9EDD6F0D3}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
