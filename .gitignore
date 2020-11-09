@@ -4,6 +4,7 @@
 *.lo
 *.o
 *.obj
+*.so
 
 # Precompiled Headers
 *.gch
@@ -27,3 +28,5 @@
 *.exe
 *.out
 *.app
+
+
