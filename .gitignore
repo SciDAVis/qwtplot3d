@@ -29,4 +29,8 @@
 *.out
 *.app
 
+# Folders
+Debug/lib/
+Release/lib/
+
 
