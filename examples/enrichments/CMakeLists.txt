@@ -1,0 +1,21 @@
+
+set( SRCS
+  "main.cpp"
+  "enrichments.cpp"
+  "enrichmentmainwindow.cpp"
+  )
+set( HEADERS
+  "enrichments.h"
+  "enrichmentmainwindow.h"
+  )
+set( FORMS
+  "enrichmentmainwindowbase4.ui"
+  )
+
+add_executable( enrichments WIN32
+  ${SRCS}
+  ${HEADERS}
+  ${FORMS}
+  )
+
+target_link_libraries( enrichments qwtplot3d )
