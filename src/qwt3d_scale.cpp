@@ -111,8 +111,8 @@ void LinearScale::calculate()
     if (isPracticallyZero(mstart_p, -t*interval)) // prevent rounding errors near 0
       runningval = 0.0;
     majors_p.push_back(runningval);
-	}
-  majorintervals_p = majors_p.size();
+    }
+  majorintervals_p = static_cast<int>(majors_p.size());
   if (majorintervals_p)
     --majorintervals_p;
 
@@ -215,8 +215,8 @@ void LogScale::calculate()
     if (runningval>=start_p)
       majors_p.push_back(runningval);
     ++runningval;
-	}
-  majorintervals_p = majors_p.size();
+    }
+  majorintervals_p = static_cast<int>(majors_p.size());
   if (majorintervals_p)
     --majorintervals_p;
 

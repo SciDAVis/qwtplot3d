@@ -182,7 +182,7 @@ void ColorLegend::draw()
 	glEnd();
 
 
-	unsigned size = colors.size();
+    size_t size = colors.size();
 	RGBA rgb;
 	
 	if (orientation_ == ColorLegend::BottomTop)

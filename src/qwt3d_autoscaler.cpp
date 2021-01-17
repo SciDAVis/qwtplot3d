@@ -45,7 +45,7 @@ double floorExt( int& exponent, double x, std::vector<double>& sortedmantissi)
   \param x Input value
   \return Mantissa
 */
-double floor125( int& exponent, double x)
+[[maybe_unused]] double floor125( int& exponent, double x)
 {
   std::vector<double> m(2);
   m[0] = 1;
@@ -216,7 +216,7 @@ int LinearAutoScaler::execute(double& a, double& b, double start, double stop, i
 		}
     else
     {
-      for (unsigned int i=mantissi_.size()-1; i>0; --i)
+      for (size_t i=mantissi_.size()-1; i>0; --i)
       {
         if (int(c) == mantissi_[i])
         {

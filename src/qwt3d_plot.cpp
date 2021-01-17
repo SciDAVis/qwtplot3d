@@ -126,8 +126,8 @@ Plot3D::Plot3D( QWidget * parent, const QGLWidget * shareWidget)
 
 Plot3D::~Plot3D()
 {
-	makeCurrent();
-	SaveGlDeleteLists( displaylists_p[0], displaylists_p.size() );
+    makeCurrent();
+    SaveGlDeleteLists( displaylists_p[0], static_cast<GLsizei>(displaylists_p.size()) );
 	datacolor_p->destroy();
   delete userplotstyle_p;
   for (ELIT it = elist_p.begin(); it!=elist_p.end(); ++it)

@@ -157,8 +157,8 @@ void SurfacePlot::Isolines2FloorC()
 		for (unsigned i=0; i!=actualDataC_->cells.size(); ++i)
 		{
 			nodes.clear();
-			unsigned cellnodes = actualDataC_->cells[i].size();
-			for (unsigned j=0; j!=cellnodes; ++j)
+            size_t cellnodes = actualDataC_->cells[i].size();
+            for (size_t j=0; j<cellnodes; ++j)
 			{
 				nodes.push_back(actualDataC_->nodes[actualDataC_->cells[i][j]]);
 			}
@@ -273,10 +273,10 @@ bool SurfacePlot::loadFromData(TripleField const& data, CellField const& poly)
 			n = Triple(0,0,0);
 		else
 		{
-			for (unsigned j = 0; j < poly[i].size(); ++j) 
+            for (size_t j = 0; j < poly[i].size(); ++j)
 			{
-				unsigned jj = (j+1) % poly[i].size(); 
-				unsigned pjj = (j) ? j-1 : poly[i].size()-1;
+                size_t jj = (j+1) % poly[i].size();
+                size_t pjj = (j) ? j-1 : poly[i].size()-1;
 				u = actualDataC_->nodes[poly[i][jj]]-actualDataC_->nodes[poly[i][j]];		
 				v = actualDataC_->nodes[poly[i][pjj]]-actualDataC_->nodes[poly[i][j]];
 				n = normalizedcross(u,v);
