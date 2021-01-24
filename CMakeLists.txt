@@ -27,6 +27,10 @@ else()
   set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -pedantic" )
 endif()
 
+if( APPLE )
+  add_compile_definitions( GL_SILENCE_DEPRECATION )
+endif()
+
 find_package( Qt5 COMPONENTS Core Gui OpenGL REQUIRED )
 
 find_package( OpenGL COMPONENTS OpenGL REQUIRED )
