@@ -104,11 +104,12 @@ target_link_libraries( qwtplot3d Qt5::Core Qt5::Gui Qt5::OpenGL OpenGL::GLU )
 
 target_include_directories( qwtplot3d PUBLIC include )
 
-if( GL2PS_LIBRARY )
+if( NOT GL2PS_LIBRARY )
+  enable_language( C )
+  target_sources( qwtplot3d PRIVATE "3rdparty/gl2ps/gl2ps.c" "3rdparty/gl2ps/gl2ps.h" )
+else()
   target_link_libraries( qwtplot3d ${GL2PS_LIBRARY} )
   target_include_directories( qwtplot3d PRIVATE ${GL2PS_INCLUDE_DIR} )
-else()
-  target_sources( qwtplot3d PRIVATE "3rdparty/gl2ps/gl2ps.c" "3rdparty/gl2ps/gl2ps.h" )
 endif()
 
 if( WIN32 AND BUILD_SHARED_LIBS )
