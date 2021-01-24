@@ -1,0 +1,107 @@
+name: CI Tests
+
+on: [pull_request,push]
+
+jobs:
+  Ubuntu:
+
+    runs-on: ubuntu-20.04
+
+    name: Ubuntu
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install prerequisties
+        run: |
+          sudo apt update
+          sudo apt install -y --no-install-recommends \
+            qtbase5-dev \
+            libqt5opengl5-dev \
+            qttools5-dev \
+            libgl2ps-dev
+
+      - name: Configuring
+        run: |
+          mkdir build && cd build
+          cmake ..
+
+      - name: Building
+        run: |
+          make -j$(nproc) -C build
+
+  MSVC:
+
+    runs-on: windows-latest
+
+    name: MSVC
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v1
+        with:
+          path: ../Qt
+          key: ${{ runner.os }}-QtCache
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: 5.15.2
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+
+      - uses: lukka/run-vcpkg@v6
+        with:
+          vcpkgGitCommitId: 50ea8c0ab7aca3bb9245bba7fc877ad2f2a4464c
+          setupOnly: true
+      - name: Install VCPKG packages
+        run: |
+          Add-Content ${{ env.VCPKG_ROOT }}\triplets\x64-windows.cmake "set(VCPKG_BUILD_TYPE release)" 
+          ${{ env.VCPKG_ROOT }}\vcpkg install gl2ps --triplet x64-windows
+
+      - name: Configuring
+        run: |
+          mkdir build; cd build
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}\scripts\buildsystems\vcpkg.cmake
+
+      - name: Building
+        run: |
+          cmake --build build --config Release -- -maxCpuCount
+
+  MinGW-w64:
+
+    runs-on: windows-latest
+
+    name: MinGW-w64
+
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install MinGW-w64 packages
+        uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            make
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-qt5
+            mingw-w64-x86_64-gl2ps
+
+      - name: Configuring
+        run: |
+          mkdir build && cd build
+          cmake .. -G"MSYS Makefiles"
+
+      - name: Building
+        run: |
+          make -C build -j$(nproc)
