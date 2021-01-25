@@ -92,9 +92,9 @@ void SurfacePlot::setResolution( int res )
 
 void SurfacePlot::updateNormals()
 {
-	SaveGlDeleteLists(displaylists_p[NormalObject], 1); 
-	
-	if (plotStyle() == NOPLOT && !normals() || !actualData_p)
+	SaveGlDeleteLists(displaylists_p[NormalObject], 1);
+
+	if ( (plotStyle() == NOPLOT && !normals()) || !actualData_p)
 		return;
 
 	displaylists_p[NormalObject] = glGenLists(1);

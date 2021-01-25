@@ -175,7 +175,11 @@ void Plot3D::applyLight(unsigned light)
   glRotatef( lights_[light].rot.x-90, 1.0, 0.0, 0.0 ); 
   glRotatef( lights_[light].rot.y   , 0.0, 1.0, 0.0 ); 
   glRotatef( lights_[light].rot.z   , 0.0, 0.0, 1.0 );
-  GLfloat lightPos[4] = { lights_[light].shift.x, lights_[light].shift.y, lights_[light].shift.z, 1.0};
+  double light4d[4] = { lights_[light].shift.x, lights_[light].shift.y, lights_[light].shift.z, 1.0};
+  GLfloat lightPos[4] {};
+  for(size_t i=0; i<4; i++) {
+      lightPos[i] = static_cast<GLfloat>(light4d[i]);
+  }
   GLenum le = lightEnum(light);
   glLightfv(le, GL_POSITION, lightPos);  
 }

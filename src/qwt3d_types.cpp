@@ -189,8 +189,8 @@ void Qwt3D::convexhull2d( std::vector<unsigned>& idx, const std::vector<Tuple>& 
     coordinate_type** points = new coordinate_type*[src.size()+1] ;
     coordinate_type* P = new coordinate_type[src.size()*2];
 
-    int i;
-		for (i=0; i<(int)src.size(); ++i)
+    size_t i;
+        for (i=0; i<src.size(); ++i)
     {
         points[i] = &P[2*i];
         points[i][0] = src[i].x;
@@ -198,7 +198,7 @@ void Qwt3D::convexhull2d( std::vector<unsigned>& idx, const std::vector<Tuple>& 
     }
 
     coordinate_type* start = points[0];
-    int m = _ch2d( points, src.size() );
+    size_t m = _ch2d( points, static_cast<int>(src.size()) );
     idx.resize(m);
     
 		for (i=0; i<m; ++i)
@@ -211,12 +211,12 @@ void Qwt3D::convexhull2d( std::vector<unsigned>& idx, const std::vector<Tuple>& 
 
 unsigned Qwt3D::tesselationSize(CellField const& t)
 {
-	unsigned ret = 0;
-	
-	for (unsigned i=0; i!=t.size(); ++i)
-		ret += t[i].size();
-	
-	return ret;
+    size_t ret = 0;
+
+    for (size_t i=0; i<t.size(); ++i)
+        ret += t[i].size();
+
+    return static_cast<unsigned>(ret);
 }
 
 #endif // QWT3D_NOT_FOR_DOXYGEN

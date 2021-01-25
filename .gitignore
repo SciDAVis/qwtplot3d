@@ -34,5 +34,6 @@ Debug/lib/
 Release/lib/
 Debug/tmp/
 Release/tmp/
+build/
 
 
