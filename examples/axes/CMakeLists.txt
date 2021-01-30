@@ -15,6 +15,7 @@ add_executable( axes WIN32
   ${SRCS}
   ${HEADERS}
   ${FORMS}
+  ${RC_ICON}
   )
 
 target_link_libraries( axes qwtplot3d )
