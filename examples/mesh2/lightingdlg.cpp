@@ -124,12 +124,8 @@ void Pointer::drawBegin()
 LightingDlg::LightingDlg(QWidget *parent)
 :LightingBase(parent)
 {
-#if QT_VERSION < 0x040000
-  QGridLayout *grid = new QGridLayout( frame, 0, 0 );
-#else
   setupUi(this);
   QGridLayout *grid = new QGridLayout( frame);
-#endif
 
   dataPlot = 0;
   

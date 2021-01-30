@@ -19,11 +19,7 @@ class QWT3D_EXPORT Plot3D : public QGLWidget
 
 public:
 	
-#if QT_VERSION < 0x040000
-    Plot3D( QWidget* parent = 0, const char* name = 0 );
-#else
     Plot3D ( QWidget * parent = 0, const QGLWidget * shareWidget = 0 );
-#endif
     virtual ~Plot3D();
 
     QPixmap renderPixmap (int w=0, int h=0, bool useContext=false);	  

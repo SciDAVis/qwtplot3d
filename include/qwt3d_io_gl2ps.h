@@ -3,11 +3,7 @@
 
 #include <time.h>
 
-#if QT_VERSION < 0x040000
-#include <qgl.h>
-#else
 #include <QtOpenGL/qgl.h>
-#endif
 
 #include "qwt3d_types.h"
 #include "qwt3d_io.h"

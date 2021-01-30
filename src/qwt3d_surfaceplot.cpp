@@ -6,13 +6,8 @@ using namespace Qwt3D;
 /**
 Initializes with dataNormals()==false, NOFLOOR, resolution() == 1
 */
-#if QT_VERSION < 0x040000
-SurfacePlot::SurfacePlot( QWidget* parent, const char* name )
-    : Plot3D( parent, name )
-#else
 SurfacePlot::SurfacePlot( QWidget * parent, const QGLWidget * shareWidget)
     : Plot3D( parent, shareWidget) 
-#endif
 {
 	datanormals_p = false;
 	normalLength_p = 0.02;

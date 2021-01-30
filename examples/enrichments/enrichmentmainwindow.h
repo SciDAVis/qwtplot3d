@@ -3,24 +3,9 @@
 #include "qwt3d_plot.h"
 #include "enrichments.h"
 
-
-#if QT_VERSION < 0x040000
-#include "enrichmentmainwindowbase.h"
-#else
-#include "ui_enrichmentmainwindowbase4.h"
-#endif
+#include "ui_enrichmentmainwindowbase.h"
 
 //MOC_SKIP_BEGIN
-#if QT_VERSION < 0x040000
-  class DummyBase : public EnrichmentMainWindowBase
-  {
-  public:
-    DummyBase(QWidget* parent = 0) 
-      : EnrichmentMainWindowBase(parent) 
-    {
-    } 
-  };
-#else
   class DummyBase : public QMainWindow, protected Ui::MainWindow
   {
   public:
@@ -29,7 +14,6 @@
     {
     } 
   };
-#endif
 //MOC_SKIP_END
 
 

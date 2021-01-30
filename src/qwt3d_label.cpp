@@ -101,22 +101,14 @@ void Label::update()
 
   QRect r = 	QRect(QPoint(0,0),fm.size(Qwt3D::SingleLine, text_));//fm.boundingRect(text_)  misbehaviour under linux;
   
-#if QT_VERSION < 0x040000
- 		r.moveBy(0, -r.top());
-#else
  		r.translate(0, -r.top());
-#endif
 	
 	pm_ = QPixmap(r.width(), r.bottom());
 
 	if (pm_.isNull()) // else crash under linux
 	{
 		r = 	QRect(QPoint(0,0),fm.size(Qwt3D::SingleLine, QString(" "))); // draw empty space else //todo
-#if QT_VERSION < 0x040000
- 		r.moveBy(0, -r.top());
-#else
  		r.translate(0, -r.top());
-#endif
 		pm_ = QPixmap(r.width(), r.bottom());		
 	}
 	
@@ -130,10 +122,6 @@ void Label::update()
 
 	pm_.setMask(bm);
   
-  // avoids uninitialized areas in some cases
-#if QT_VERSION < 0x040000
-	pm_.fill();
-#endif
 	p.begin( &pm_ );
 	  p.setFont( font_ );
 	  p.setPen( Qt::SolidLine );
@@ -141,11 +129,7 @@ void Label::update()
 
 	  p.drawText(0,r.height() - fm.descent() -1 , text_);
 	p.end();
-#if QT_VERSION < 0x040000
-  buf_ = pm_.convertToImage();
-#else
   buf_ = pm_.toImage();
-#endif
 	tex_ = QGLWidget::convertToGLFormat( buf_ );	  // flipped 32bit RGBA ?		
 }
 

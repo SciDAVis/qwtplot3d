@@ -12,14 +12,9 @@ using namespace Qwt3D;
 /*!
   This should be the first call in your derived classes constructors.  
 */
-#if QT_VERSION < 0x040000
-Plot3D::Plot3D( QWidget* parent, const char* name )
-    : QGLWidget( parent, name )
-#else
 Plot3D::Plot3D( QWidget * parent, const QGLWidget * shareWidget)
-    : QGLWidget( parent, shareWidget) 
-#endif
-{  
+    : QGLWidget( parent, shareWidget)
+{
   initializedGL_ = false;
   renderpixmaprequest_ = false;
   xRot_ = yRot_ = zRot_ = 0.0;		// default object rotation
@@ -60,30 +55,6 @@ Plot3D::Plot3D( QWidget * parent, const QGLWidget * shareWidget)
 	
   kbd_input_enabled_ = true;
 
-#if QT_VERSION < 0x040000
-  setFocusPolicy(QWidget::StrongFocus);
-  assignMouse(Qt::LeftButton, 
-							Qt::LeftButton | Qt::ShiftButton,
-							Qt::LeftButton, 
-							Qt::LeftButton | Qt::AltButton, 
-							Qt::LeftButton | Qt::AltButton, 
-							Qt::LeftButton | Qt::AltButton | Qt::ShiftButton,
-							Qt::LeftButton | Qt::AltButton | Qt::ControlButton,
-							Qt::LeftButton | Qt::ControlButton, 
-							Qt::LeftButton | Qt::ControlButton);
-
-
-  assignKeyboard(Qt::Key_Down, Qt::Key_Up,
-    Qt::ShiftButton + Qt::Key_Right, Qt::ShiftButton + Qt::Key_Left,
-    Qt::Key_Right, Qt::Key_Left,
-    Qt::AltButton + Qt::Key_Right, Qt::AltButton + Qt::Key_Left,
-    Qt::AltButton + Qt::Key_Down, Qt::AltButton + Qt::Key_Up,
-    Qt::AltButton + Qt::ShiftButton + Qt::Key_Down, Qt::AltButton + Qt::ShiftButton + Qt::Key_Up,
-    Qt::AltButton + Qt::ControlButton + Qt::Key_Down, Qt::AltButton + Qt::ControlButton + Qt::Key_Up,
-    Qt::ControlButton + Qt::Key_Right, Qt::ControlButton + Qt::Key_Left,
-    Qt::ControlButton + Qt::Key_Down, Qt::ControlButton + Qt::Key_Up
-   );
-#else
   setFocusPolicy(Qt::StrongFocus);
   assignMouse(Qt::LeftButton, 
 							MouseState(Qt::LeftButton, Qt::ShiftModifier),
@@ -107,7 +78,6 @@ Plot3D::Plot3D( QWidget * parent, const QGLWidget * shareWidget)
     KeyboardState(Qt::Key_Right, Qt::ControlModifier), KeyboardState(Qt::Key_Left, Qt::ControlModifier),
     KeyboardState(Qt::Key_Down, Qt::ControlModifier), KeyboardState(Qt::Key_Up, Qt::ControlModifier)
    );
-#endif
   setKeySpeed(3,5,5);
 
 	legend_.setLimits(0, 100);

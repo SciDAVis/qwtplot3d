@@ -2,9 +2,6 @@
 #define QWT3D_GLOBAL_H
 
 #include <qglobal.h>
-#if QT_VERSION < 0x040000
-#include <qmodules.h>
-#endif
 
 #define QWT3D_MAJOR_VERSION 0
 #define QWT3D_MINOR_VERSION 2
