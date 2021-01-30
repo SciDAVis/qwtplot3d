@@ -25,6 +25,7 @@ add_executable( mesh2 WIN32
   ${HEADERS}
   ${FORMS}
   "images.qrc"
+  ${RC_ICON}
   )
 
 target_link_libraries( mesh2 qwtplot3d )
