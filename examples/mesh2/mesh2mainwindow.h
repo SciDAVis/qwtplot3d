@@ -3,27 +3,12 @@
 
 #include "qwt3d_surfaceplot.h"
 
-
-#if QT_VERSION < 0x040000
-#include "mesh2mainwindowbase.h"
-#else
-#include "ui_mesh2mainwindowbase4.h"
+#include "ui_mesh2mainwindowbase.h"
 #include "designerworkaround.h"
-#endif
 
 
 
 //MOC_SKIP_BEGIN
-#if QT_VERSION < 0x040000
-  class DummyBase : public Mesh2MainWindowBase
-  {
-  public:
-    DummyBase(QWidget* parent = 0) 
-      : Mesh2MainWindowBase(parent) 
-    {
-    } 
-  };
-#else
   class DummyBase : public QMainWindow, protected Ui::MainWindow, protected DesignerWorkaround
   {
   public:
@@ -32,7 +17,6 @@
     {
     } 
   };
-#endif
 //MOC_SKIP_END
 
 class QLabel;
@@ -126,9 +110,6 @@ private:
     bool connectA (const QObject* sender, const char * slot);
     bool connectAG (const QObject* sender, const char * slot);
 
-#if QT_VERSION < 0x040000
-	ColorMapPreview* colormappv_;
-#endif
 };
 
 #endif /* include guarded */

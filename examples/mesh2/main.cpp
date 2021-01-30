@@ -20,9 +20,6 @@ int main( int argc, char **argv )
     
   Mesh2MainWindow mainwindow;
 
-#if QT_VERSION < 0x040000
-  app.setMainWidget(&mainwindow);
-#endif
 
   mainwindow.resize(1024,768);
 	mainwindow.show();

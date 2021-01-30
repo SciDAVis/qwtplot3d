@@ -3,10 +3,7 @@
 #include "qwt3d_plot.h"
 #include "qwt3d_io_gl2ps.h"
 #include "qwt3d_io_reader.h"
-#if QT_VERSION < 0x040000
-#else
-  #include <QImageWriter>
-#endif
+#include <QImageWriter>
 
 using namespace Qwt3D;
 
@@ -244,20 +241,11 @@ bool PixmapWriter::operator()(Plot3D* plot, QString const& fname)
 {
   QImage im = plot->grabFrameBuffer(true);
   
-#if QT_VERSION < 0x040000
-  QImageIO iio;
-  iio.setImage(im);
-#else
   QImageWriter iio;
-#endif
   iio.setFormat(QWT3DLOCAL8BIT(fmt_));
   iio.setQuality(quality_);
   iio.setFileName(fname);
-#if QT_VERSION < 0x040000
-  return iio.write();
-#else
   return iio.write(im);
-#endif
 }
 
 //! Calls Qt's QImageIO::setQuality() function.
@@ -268,13 +256,8 @@ void PixmapWriter::setQuality(int val)
 
 void IO::setupHandler()
 {
-#if QT_VERSION < 0x040000
-  QStringList list = QImage::outputFormatList();
-  QStringList::Iterator it = list.begin();
-#else
   QList<QByteArray> list = QImageWriter::supportedImageFormats();
   QList<QByteArray>::Iterator it = list.begin();
-#endif
   PixmapWriter qtw;
   while( it != list.end() ) 
   {

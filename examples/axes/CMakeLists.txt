@@ -8,7 +8,7 @@ set( HEADERS
   "axesmainwindow.h"
   )
 set( FORMS
-  "axesmainwindowbase4.ui"
+  "axesmainwindowbase.ui"
   )
 
 add_executable( axes WIN32

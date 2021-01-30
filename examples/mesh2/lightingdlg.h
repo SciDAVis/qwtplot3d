@@ -8,11 +8,7 @@
 #include "qwt3d_enrichment.h"
 #include "qwt3d_color.h"
 
-#if QT_VERSION < 0x040000
-#include "lightingdlgbase.h"
-#else
-#include "ui_lightingdlgbase4.h"
-#endif
+#include "ui_lightingdlgbase.h"
 
 class Pointer : public Qwt3D::VertexEnrichment
 {
@@ -50,16 +46,6 @@ public:
 };
 
 //MOC_SKIP_BEGIN
-#if QT_VERSION < 0x040000
-  class LightingBase : public LightingDlgBase
-  {
-  public:
-    LightingBase(QWidget* parent = 0) 
-      : LightingDlgBase(parent) 
-    {
-    } 
-  };
-#else
   class LightingBase : public QDialog, protected Ui::Dialog
   {
   public:
@@ -68,7 +54,6 @@ public:
     {
     } 
   };
-#endif
 //MOC_SKIP_END
 
 

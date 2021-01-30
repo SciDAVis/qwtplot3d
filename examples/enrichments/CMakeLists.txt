@@ -9,7 +9,7 @@ set( HEADERS
   "enrichmentmainwindow.h"
   )
 set( FORMS
-  "enrichmentmainwindowbase4.ui"
+  "enrichmentmainwindowbase.ui"
   )
 
 add_executable( enrichments WIN32

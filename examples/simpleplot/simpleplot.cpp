@@ -74,9 +74,6 @@
   {
       QApplication a(argc, argv);
       Plot plot;
-#if QT_VERSION < 0x040000
-      a.setMainWidget(&plot);
-#endif
       plot.resize(800,600);
       plot.show();
       return a.exec();

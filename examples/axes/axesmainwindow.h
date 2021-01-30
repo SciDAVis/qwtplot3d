@@ -4,23 +4,9 @@
 #include "qwt3d_function.h"
 #include "qwt3d_plot.h"
 
-#if QT_VERSION < 0x040000
-#include "axesmainwindowbase.h"
-#else
-#include "ui_axesmainwindowbase4.h"
-#endif
+#include "ui_axesmainwindowbase.h"
 
 //MOC_SKIP_BEGIN
-#if QT_VERSION < 0x040000
-  class DummyBase : public AxesMainWindowBase
-  {
-  public:
-    DummyBase(QWidget* parent = 0) 
-      : AxesMainWindowBase(parent) 
-    {
-    } 
-  };
-#else
   class DummyBase : public QMainWindow, protected Ui::MainWindow
   {
   public:
@@ -29,7 +15,6 @@
     {
     } 
   };
-#endif
 //MOC_SKIP_END
 
 

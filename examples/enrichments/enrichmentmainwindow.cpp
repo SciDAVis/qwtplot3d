@@ -33,13 +33,8 @@ Hat* hat;
 EnrichmentMainWindow::EnrichmentMainWindow( QWidget* parent )
 	: DummyBase( parent )
 {
-#if QT_VERSION < 0x040000
-	setCaption("enrichment");
-  QGridLayout *grid = new QGridLayout( frame, 0, 0 );
-#else
   setupUi(this);
   QGridLayout *grid = new QGridLayout( frame);
-#endif
 
   plot = new SurfacePlot(frame);
   grid->addWidget( plot, 0, 0 );
