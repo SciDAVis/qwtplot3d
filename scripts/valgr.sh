@@ -1,1 +1,0 @@
-valgrind --logfile=valog --suppressions=qwtplot3d.supp --error-limit=no $1
