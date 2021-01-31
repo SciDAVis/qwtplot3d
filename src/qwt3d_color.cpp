@@ -3,61 +3,59 @@
 
 using namespace Qwt3D;
 
-StandardColor::StandardColor(Plot3D* data, unsigned size)
-			: data_(data)
+StandardColor::StandardColor(Plot3D *data, unsigned size) : data_(data)
 {
-	Q_ASSERT(data_);
-	
-	reset(size);
+    Q_ASSERT(data_);
+
+    reset(size);
 }
 
 void StandardColor::reset(unsigned size)
 {
-	colors_ = ColorVector(size);
-	RGBA elem;
+    colors_ = ColorVector(size);
+    RGBA elem;
 
-	double dsize = size;
-	
-	for (unsigned int i=0; i!=size; ++i)
-	{
-		elem.r = i / dsize;
-		elem.g = i / dsize / 4;
-		elem.b = 1 - i/dsize;
-		elem.a = 1.0;
-		colors_[i] = elem;
-	}
+    double dsize = size;
+
+    for (unsigned int i = 0; i != size; ++i) {
+        elem.r = i / dsize;
+        elem.g = i / dsize / 4;
+        elem.b = 1 - i / dsize;
+        elem.a = 1.0;
+        colors_[i] = elem;
+    }
 }
 
 /**
-	Assigns a new ColorVector (Also overwrites the constructors size argument)
+        Assigns a new ColorVector (Also overwrites the constructors size argument)
 */
-void StandardColor::setColorVector(ColorVector const& cv)
+void StandardColor::setColorVector(ColorVector const &cv)
 {
-	colors_ = cv;
+    colors_ = cv;
 }
 
 void StandardColor::setAlpha(double a)
 {
-	if (a<0 || a>1)
-		return;
-	
-	RGBA elem;
+    if (a < 0 || a > 1)
+        return;
 
-	for (unsigned int i=0; i!=colors_.size(); ++i)
-	{
-		elem = colors_[i];
-		elem.a = a;
-		colors_[i] = elem;
-	}	
-}	
+    RGBA elem;
+
+    for (unsigned int i = 0; i != colors_.size(); ++i) {
+        elem = colors_[i];
+        elem.a = a;
+        colors_[i] = elem;
+    }
+}
 
 RGBA StandardColor::operator()(double, double, double z) const
 {
-	Q_ASSERT(data_);
-	int index = (int)((colors_.size()-1) * (z - data_->hull().minVertex.z) / (data_->hull().maxVertex.z-data_->hull().minVertex.z));
-	if (index < 0)
-		index = 0;
-	if ((unsigned int)index > colors_.size() - 1)
-		index = (int)(colors_.size() - 1);
-	return colors_[index];
+    Q_ASSERT(data_);
+    int index = (int)((colors_.size() - 1) * (z - data_->hull().minVertex.z)
+                      / (data_->hull().maxVertex.z - data_->hull().minVertex.z));
+    if (index < 0)
+        index = 0;
+    if ((unsigned int)index > colors_.size() - 1)
+        index = (int)(colors_.size() - 1);
+    return colors_[index];
 }

@@ -6,44 +6,39 @@
 
 #include "ui_axesmainwindowbase.h"
 
-//MOC_SKIP_BEGIN
-  class DummyBase : public QMainWindow, protected Ui::MainWindow
-  {
-  public:
-    DummyBase(QWidget* parent = 0) 
-      : QMainWindow(parent) 
-    {
-    } 
-  };
-//MOC_SKIP_END
-
+// MOC_SKIP_BEGIN
+class DummyBase : public QMainWindow, protected Ui::MainWindow
+{
+public:
+    DummyBase(QWidget *parent = 0) : QMainWindow(parent) { }
+};
+// MOC_SKIP_END
 
 class AxesMainWindow : public DummyBase
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	AxesMainWindow( QWidget* parent = 0);
-	~AxesMainWindow();
-	Qwt3D::SurfacePlot* plot;
-	Qwt3D::Function *rosenbrock;
-  void resetTics();
+    AxesMainWindow(QWidget *parent = 0);
+    ~AxesMainWindow();
+    Qwt3D::SurfacePlot *plot;
+    Qwt3D::Function *rosenbrock;
+    void resetTics();
 
 public slots:
-	void setNumberGap(int gap);
-	void setLabelGap(int gap);
+    void setNumberGap(int gap);
+    void setLabelGap(int gap);
 
-  void setSmoothLines(bool);
-  void setTicLength(int val);
-  void setTicNumber(int degree);
+    void setSmoothLines(bool);
+    void setTicLength(int val);
+    void setTicNumber(int degree);
 
-  void standardItems();
-  void complexItems();
-  void letterItems();
-  void timeItems();
-  void customScale();
+    void standardItems();
+    void complexItems();
+    void letterItems();
+    void timeItems();
+    void customScale();
 
 private:
-
-  int tics;
+    int tics;
 };
