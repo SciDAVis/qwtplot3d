@@ -1,5 +1,5 @@
-#ifndef qwt3d_autoptr_h__2004_05_14_18_57_begin_guarded_code
-#define qwt3d_autoptr_h__2004_05_14_18_57_begin_guarded_code
+#ifndef qwt3d_autoptr_h
+#define qwt3d_autoptr_h
 
 namespace Qwt3D {
 

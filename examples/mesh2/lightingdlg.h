@@ -1,5 +1,5 @@
-#ifndef lightingdlg_h__2004_03_07_13_35_begin_guarded_code
-#define lightingdlg_h__2004_03_07_13_35_begin_guarded_code
+#ifndef lightingdlg_h
+#define lightingdlg_h
 
 #include <math.h>
 #include <qapplication.h>

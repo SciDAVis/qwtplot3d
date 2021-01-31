@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     plot1->setBackgroundColor(RGBA(1, 1, 157. / 255));
     plot1->makeCurrent();
     plot1->updateData();
-    plot1->updateGL();
+    plot1->update();
 
     Plot *plot2 = new Plot(spl, 80);
     plot2->setZoom(0.8);
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
     plot2->setBackgroundColor(RGBA(1, 1, 157. / 255));
     plot2->makeCurrent();
     plot2->updateData();
-    plot2->updateGL();
+    plot2->update();
 
     spl->resize(800, 400);
     spl->show();

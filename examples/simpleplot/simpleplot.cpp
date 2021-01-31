@@ -30,6 +30,7 @@ public:
 
 Plot::Plot()
 {
+    show();
     setTitle("A Simple SurfacePlot Demonstration");
 
     Rosenbrock rosenbrock(*this);
@@ -58,7 +59,7 @@ Plot::Plot()
     setCoordinateStyle(BOX);
 
     updateData();
-    updateGL();
+    update();
 }
 
 int main(int argc, char **argv)

@@ -12,11 +12,6 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    if (!QGLFormat::hasOpenGL()) {
-        qWarning("This system has no OpenGL support. Exiting.");
-        return -1;
-    }
-
     Mesh2MainWindow mainwindow;
 
     mainwindow.resize(1024, 768);

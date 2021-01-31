@@ -6,8 +6,7 @@ using namespace Qwt3D;
 /**
 Initializes with dataNormals()==false, NOFLOOR, resolution() == 1
 */
-SurfacePlot::SurfacePlot(QWidget *parent, const QGLWidget *shareWidget)
-    : Plot3D(parent, shareWidget)
+SurfacePlot::SurfacePlot(QWidget *parent) : Plot3D(parent)
 {
     datanormals_p = false;
     normalLength_p = 0.02;
@@ -80,7 +79,7 @@ void SurfacePlot::setResolution(int res)
     updateNormals();
     updateData();
     if (initializedGL())
-        updateGL();
+        update();
 
     emit resolutionChanged(res);
 }

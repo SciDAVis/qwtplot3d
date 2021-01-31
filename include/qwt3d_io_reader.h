@@ -1,5 +1,5 @@
-#ifndef qwt3d_reader_h__2004_03_07_14_03_begin_guarded_code
-#define qwt3d_reader_h__2004_03_07_14_03_begin_guarded_code
+#ifndef qwt3d_reader_h
+#define qwt3d_reader_h
 
 #include "qwt3d_io.h"
 

@@ -91,7 +91,7 @@ AxesMainWindow::AxesMainWindow(QWidget *parent) : DummyBase(parent)
 
     plot->makeCurrent();
     plot->updateData();
-    plot->updateGL();
+    plot->update();
 
     connect(smoothBox, SIGNAL(toggled(bool)), this, SLOT(setSmoothLines(bool)));
     connect(numbergapslider, SIGNAL(valueChanged(int)), this, SLOT(setNumberGap(int)));
@@ -117,20 +117,20 @@ void AxesMainWindow::setNumberGap(int gap)
 {
     plot->coordinates()->adjustNumbers(gap);
     plot->makeCurrent();
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::setLabelGap(int gap)
 {
     plot->coordinates()->adjustLabels(gap);
     plot->makeCurrent();
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::setSmoothLines(bool val)
 {
     plot->coordinates()->setLineSmooth(val);
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::setTicLength(int val)
@@ -138,13 +138,13 @@ void AxesMainWindow::setTicLength(int val)
     double majl = (plot->coordinates()->second() - plot->coordinates()->first()).length() / 1000.;
     majl = majl * val;
     plot->coordinates()->setTicLength(majl, 0.6 * majl);
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::setTicNumber(int degree)
 {
     plot->coordinates()->axes[X1].setMajors(tics + degree);
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::resetTics()
@@ -161,7 +161,7 @@ void AxesMainWindow::resetTics()
 void AxesMainWindow::standardItems()
 {
     resetTics();
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::letterItems()
@@ -179,7 +179,7 @@ void AxesMainWindow::letterItems()
     plot->coordinates()->axes[Y3].setScale(new Letter(false));
     plot->coordinates()->axes[Y4].setScale(new Letter(false));
     plot->setTitle("Use the tics slider for this example!");
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::complexItems()
@@ -189,7 +189,7 @@ void AxesMainWindow::complexItems()
     plot->coordinates()->axes[Y2].setScale(new Imaginary);
     plot->coordinates()->axes[Y3].setScale(new Imaginary);
     plot->coordinates()->axes[Y4].setScale(new Imaginary);
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::timeItems()
@@ -199,7 +199,7 @@ void AxesMainWindow::timeItems()
     plot->coordinates()->axes[Z2].setScale(new TimeItems);
     plot->coordinates()->axes[Z3].setScale(new TimeItems);
     plot->coordinates()->axes[Z4].setScale(new TimeItems);
-    plot->updateGL();
+    plot->update();
 }
 
 void AxesMainWindow::customScale()
@@ -217,5 +217,5 @@ void AxesMainWindow::customScale()
 
     plot->coordinates()->setGridLines(true, true, Qwt3D::BACK);
 
-    plot->updateGL();
+    plot->update();
 }

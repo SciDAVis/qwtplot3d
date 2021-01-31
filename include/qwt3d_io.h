@@ -1,5 +1,5 @@
-#ifndef __qwt3d_io_2003_07_04_23_27__
-#define __qwt3d_io_2003_07_04_23_27__
+#ifndef __qwt3d_io__
+#define __qwt3d_io__
 
 #include <vector>
 #include <algorithm>

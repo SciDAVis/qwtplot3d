@@ -17,7 +17,7 @@ public:
         return 0.7 * log10((1 - x) * (1 - x) + 10 * (y - x * x) * (y - x * x));
     }
     //	QString name() const {return "Almost {\\it Rosenbrock}\\,:\\quad$\\frac{\\ln((1-x)^2 +
-    //100(y-x^2)^2)}{8}$";}
+    // 100(y-x^2)^2)}{8}$";}
 };
 
 class Hat : public Function
