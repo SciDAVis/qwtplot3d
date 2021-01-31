@@ -5,37 +5,30 @@
 
 #include "ui_enrichmentmainwindowbase.h"
 
-//MOC_SKIP_BEGIN
-  class DummyBase : public QMainWindow, protected Ui::MainWindow
-  {
-  public:
-    DummyBase(QWidget* parent = 0) 
-      : QMainWindow(parent) 
-    {
-    } 
-  };
-//MOC_SKIP_END
-
+// MOC_SKIP_BEGIN
+class DummyBase : public QMainWindow, protected Ui::MainWindow
+{
+public:
+    DummyBase(QWidget *parent = 0) : QMainWindow(parent) { }
+};
+// MOC_SKIP_END
 
 class EnrichmentMainWindow : public DummyBase
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	EnrichmentMainWindow( QWidget* parent = 0 );
-	~EnrichmentMainWindow();
-  void setColor();
-  Bar *bar;
-  Qwt3D::SurfacePlot* plot;
+    EnrichmentMainWindow(QWidget *parent = 0);
+    ~EnrichmentMainWindow();
+    void setColor();
+    Bar *bar;
+    Qwt3D::SurfacePlot *plot;
 
 public slots:
-  void setLevel(int);
-  void setWidth(int);
-  void barSlot();
- 
+    void setLevel(int);
+    void setWidth(int);
+    void barSlot();
+
 private:
-  double level_, width_;
-  
+    double level_, width_;
 };
-
-
