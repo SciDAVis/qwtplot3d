@@ -1,5 +1,5 @@
-#ifndef mesh2mainwindow_h__2004_03_07_13_38_begin_guarded_code
-#define mesh2mainwindow_h__2004_03_07_13_38_begin_guarded_code
+#ifndef mesh2mainwindow_h
+#define mesh2mainwindow_h
 
 #include "qwt3d_surfaceplot.h"
 

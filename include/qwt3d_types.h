@@ -24,6 +24,7 @@
 #include "qwt3d_portability.h"
 #include "qwt3d_helper.h"
 #include "qwt3d_openglhelper.h"
+#include <QColor>
 
 //! Common namespace for all QwtPlot3D classes
 namespace Qwt3D {

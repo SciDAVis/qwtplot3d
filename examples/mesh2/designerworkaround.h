@@ -1,5 +1,5 @@
-#ifndef designerworkaround_h__2005_07_10_10_46_begin_guarded_code
-#define designerworkaround_h__2005_07_10_10_46_begin_guarded_code
+#ifndef designerworkaround_h
+#define designerworkaround_h
 
 #include <QMenu>
 #include <QToolBar>

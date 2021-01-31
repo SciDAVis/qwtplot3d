@@ -49,7 +49,7 @@ void Plot3D::enableLighting(bool val)
 
     if (!initializedGL())
         return;
-    updateGL();
+    update();
 }
 
 void Plot3D::disableLighting(bool val)

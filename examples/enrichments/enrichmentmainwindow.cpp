@@ -27,9 +27,11 @@ Hat *hat;
 EnrichmentMainWindow::EnrichmentMainWindow(QWidget *parent) : DummyBase(parent)
 {
     setupUi(this);
+    show();
     QGridLayout *grid = new QGridLayout(frame);
 
     plot = new SurfacePlot(frame);
+    plot->show();
     grid->addWidget(plot, 0, 0);
 
     plot->setTitle("Bar Style (Vertex Enrichment)");
@@ -61,7 +63,7 @@ EnrichmentMainWindow::EnrichmentMainWindow(QWidget *parent) : DummyBase(parent)
 
     setColor();
     plot->updateData();
-    plot->updateGL();
+    plot->update();
 
     levelSlider->setValue(50);
     level_ = 0.5;
@@ -110,7 +112,7 @@ void EnrichmentMainWindow::setLevel(int i)
     level_ = 1 - i / 100.;
     bar->configure(width_, level_);
     plot->updateData();
-    plot->updateGL();
+    plot->update();
 }
 
 void EnrichmentMainWindow::setWidth(int i)
@@ -118,7 +120,7 @@ void EnrichmentMainWindow::setWidth(int i)
     width_ = i / 20000.;
     bar->configure(width_, level_);
     plot->updateData();
-    plot->updateGL();
+    plot->update();
 }
 
 void EnrichmentMainWindow::barSlot()
@@ -126,5 +128,5 @@ void EnrichmentMainWindow::barSlot()
     Bar b(width_, level_);
     bar = (Bar *)plot->setPlotStyle(b);
     plot->updateData();
-    plot->updateGL();
+    plot->update();
 }

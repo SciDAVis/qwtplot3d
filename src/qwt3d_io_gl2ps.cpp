@@ -179,7 +179,7 @@ bool VectorWriter::operator()(Plot3D *plot, QString const &fname)
                        GL_RGBA, 0, NULL, 0, 0, 0, bufsize, fp, QWT3DLOCAL8BIT(fname));
 
         plot->updateData();
-        plot->updateGL();
+        plot->update();
         state = gl2psEndPage();
     }
     fclose(fp);
@@ -202,7 +202,7 @@ bool VectorWriter::operator()(Plot3D *plot, QString const &fname)
                            GL_RGBA, 0, NULL, 0, 0, 0, bufsize, fp, QWT3DLOCAL8BIT(fn));
 
             plot->updateData();
-            plot->updateGL();
+            plot->update();
             state = gl2psEndPage();
         }
         fclose(fp);

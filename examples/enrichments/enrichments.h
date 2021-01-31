@@ -1,5 +1,5 @@
-#ifndef enrichments_h__2004_02_25_13_58_begin_guarded_code
-#define enrichments_h__2004_02_25_13_58_begin_guarded_code
+#ifndef enrichments_h
+#define enrichments_h
 
 #include "qwt3d_plot.h"
 

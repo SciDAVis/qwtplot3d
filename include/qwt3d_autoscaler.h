@@ -1,5 +1,5 @@
-#ifndef __qwt3d_autoscaler_2003_08_18_12_05__
-#define __qwt3d_autoscaler_2003_08_18_12_05__
+#ifndef __qwt3d_autoscaler__
+#define __qwt3d_autoscaler__
 
 #include <vector>
 #include "qwt3d_global.h"

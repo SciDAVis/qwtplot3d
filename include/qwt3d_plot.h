@@ -1,5 +1,7 @@
-#ifndef __plot3d_2003_06_09_12_14__
-#define __plot3d_2003_06_09_12_14__
+#ifndef __plot3d__
+#define __plot3d__
+
+#include <QOpenGLWidget>
 
 #include "qwt3d_coordsys.h"
 #include "qwt3d_enrichment_std.h"
@@ -13,12 +15,12 @@ namespace Qwt3D {
   an abstract base class. The class provides interfaces for data handling and implements basic data
   controlled color allocation.
 */
-class QWT3D_EXPORT Plot3D : public QGLWidget
+class QWT3D_EXPORT Plot3D : public QOpenGLWidget
 {
     Q_OBJECT
 
 public:
-    Plot3D(QWidget *parent = 0, const QGLWidget *shareWidget = 0);
+    Plot3D(QWidget *parent = 0);
     virtual ~Plot3D();
 
     QPixmap renderPixmap(int w = 0, int h = 0, bool useContext = false);

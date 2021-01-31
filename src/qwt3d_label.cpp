@@ -132,7 +132,7 @@ void Label::update()
     p.drawText(0, r.height() - fm.descent() - 1, text_);
     p.end();
     buf_ = pm_.toImage();
-    tex_ = QGLWidget::convertToGLFormat(buf_); // flipped 32bit RGBA ?
+    tex_ = buf_.mirrored();
 }
 
 /**

@@ -1,5 +1,5 @@
-#ifndef qwt3d_portability_h__2005_07_02_11_55_begin_guarded_code
-#define qwt3d_portability_h__2005_07_02_11_55_begin_guarded_code
+#ifndef qwt3d_portability_h
+#define qwt3d_portability_h
 
 //! Portability classes providing transparent Qt3/4 support
 

@@ -1,5 +1,5 @@
-#ifndef femreader_h__2004_03_07_14_03_begin_guarded_code
-#define femreader_h__2004_03_07_14_03_begin_guarded_code
+#ifndef femreader_h
+#define femreader_h
 
 #include <math.h>
 #include <fstream>

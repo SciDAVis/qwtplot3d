@@ -1,5 +1,5 @@
-#ifndef qwt3d_parametricsurface_h__2004_03_05_23_43_begin_guarded_code
-#define qwt3d_parametricsurface_h__2004_03_05_23_43_begin_guarded_code
+#ifndef qwt3d_parametricsurface_h
+#define qwt3d_parametricsurface_h
 
 #include "qwt3d_gridmapping.h"
 

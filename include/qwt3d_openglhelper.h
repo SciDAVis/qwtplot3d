@@ -1,12 +1,14 @@
-#ifndef __openglhelper_2003_06_06_15_49__
-#define __openglhelper_2003_06_06_15_49__
+#ifndef __openglhelper__
+#define __openglhelper__
 
 #include "qglobal.h"
-#include <QtOpenGL/qgl.h>
 
 #ifdef __APPLE__
 #include <OpenGL/glu.h>
 #else
+#ifdef Q_OS_WIN
+#include "windows.h"
+#endif
 #include <GL/glu.h>
 #endif
 

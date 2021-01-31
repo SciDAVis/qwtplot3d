@@ -1,5 +1,5 @@
-#ifndef qwt3d_mapping_h__2004_03_05_13_51_begin_guarded_code
-#define qwt3d_mapping_h__2004_03_05_13_51_begin_guarded_code
+#ifndef qwt3d_mapping_h
+#define qwt3d_mapping_h
 
 #include <qstring.h>
 #include "qwt3d_global.h"
