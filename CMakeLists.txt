@@ -31,7 +31,15 @@ if( APPLE )
   add_compile_definitions( GL_SILENCE_DEPRECATION )
 endif()
 
-find_package( Qt5 COMPONENTS Core Gui OpenGL REQUIRED )
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED )
+
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui REQUIRED )
+
+if( QT_VERSION_MAJOR VERSION_GREATER_EQUAL 6 )
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS OpenGLWidgets REQUIRED )
+else()
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS OpenGL REQUIRED )
+endif()
 
 find_package( OpenGL COMPONENTS OpenGL REQUIRED )
 
@@ -100,7 +108,18 @@ set( HEADERS
 
 add_library( qwtplot3d ${SRCS} ${HEADERS} )
 
-target_link_libraries( qwtplot3d Qt5::Core Qt5::Gui Qt5::OpenGL OpenGL::GLU )
+target_link_libraries( qwtplot3d
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Gui
+  OpenGL::GLU
+  )
+
+if( QT_VERSION_MAJOR VERSION_GREATER_EQUAL 6 )
+  target_link_libraries( qwtplot3d Qt${QT_VERSION_MAJOR}::OpenGLWidgets )
+else()
+  target_link_libraries( qwtplot3d Qt${QT_VERSION_MAJOR}::OpenGL )
+endif()
+
 
 target_include_directories( qwtplot3d PUBLIC include )
 
