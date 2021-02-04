@@ -35,7 +35,12 @@ jobs:
 
     runs-on: windows-latest
 
-    name: MSVC
+    name: MSVC_Qt_${{ matrix.qt_version }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        qt_version: [5.15.2, 6.0.1]
 
     steps:
       - name: Checkout
@@ -46,12 +51,12 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ../Qt
-          key: ${{ runner.os }}-QtCache
+          key: ${{ runner.os }}-QtCache-${{ matrix.qt_version }}
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
-          version: 5.15.2
+          version: ${{ matrix.qt_version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
       - uses: lukka/run-vcpkg@v6
