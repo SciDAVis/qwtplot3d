@@ -134,9 +134,9 @@ Mesh2MainWindow::Mesh2MainWindow(QWidget *parent) : DummyBase(parent)
             SLOT(showScale(double, double, double)));
     connect(dataWidget, SIGNAL(zoomChanged(double)), this, SLOT(showZoom(double)));
 
-    connect(functionCB, SIGNAL(activated(const QString &)), this,
+    connect(functionCB, SIGNAL(currentTextChanged(const QString &)), this,
             SLOT(createFunction(const QString &)));
-    connect(psurfaceCB, SIGNAL(activated(const QString &)), this,
+    connect(psurfaceCB, SIGNAL(currentTextChanged(const QString &)), this,
             SLOT(createPSurface(const QString &)));
     connect(projection, SIGNAL(toggled(bool)), this, SLOT(toggleProjectionMode(bool)));
     connect(colorlegend, SIGNAL(toggled(bool)), this, SLOT(toggleColorLegend(bool)));
@@ -161,7 +161,7 @@ Mesh2MainWindow::Mesh2MainWindow(QWidget *parent) : DummyBase(parent)
     // todo - restore, when Qt4 re-implements preview functionality
     // connect(datacolordlg_, SIGNAL(filesSelected(const QStringList&)), this,
     // SLOT(adaptDataColors4(const QStringList&)));
-    connect(filetypeCB, SIGNAL(activated(const QString &)), this,
+    connect(filetypeCB, SIGNAL(currentTextChanged(const QString &)), this,
             SLOT(setFileType(const QString &)));
 
     filetypeCB->clear();
