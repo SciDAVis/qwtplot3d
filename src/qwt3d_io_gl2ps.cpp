@@ -172,8 +172,7 @@ bool VectorWriter::operator()(Plot3D *plot, QString const &fname)
         gl2psBeginPage("---", QWT3DLOCAL8BIT(producer), viewport, gl2ps_format_, sortmode, options,
                        GL_RGBA, 0, NULL, 0, 0, 0, bufsize, fp, QWT3DLOCAL8BIT(fname));
 
-        plot->updateData();
-        plot->update();
+        plot->grabFramebuffer();
         state = gl2psEndPage();
     }
     fclose(fp);
