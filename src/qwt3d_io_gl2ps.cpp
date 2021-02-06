@@ -67,7 +67,7 @@ void VectorWriter::setCompressed(bool)
 
 /*!
 Set output format, must be one of "EPS_GZ", "PS_GZ", "EPS",
-"PS", "PDF" (case sensitive)
+"PS", "PDF", "SVG" or "PGF" (case sensitive)
 */
 bool VectorWriter::setFormat(QString const &format)
 {
@@ -77,6 +77,10 @@ bool VectorWriter::setFormat(QString const &format)
         gl2ps_format_ = GL2PS_PS;
     } else if (format == QString("PDF")) {
         gl2ps_format_ = GL2PS_PDF;
+    } else if (format == QString("SVG")) {
+        gl2ps_format_ = GL2PS_SVG;
+    } else if (format == QString("PGF")) {
+        gl2ps_format_ = GL2PS_PGF;
     }
 #ifdef GL2PS_HAVE_ZLIB
     else if (format == QString("EPS_GZ")) {
@@ -156,17 +160,7 @@ bool VectorWriter::operator()(Plot3D *plot, QString const &fname)
     QString version = QString::number(QWT3D_MAJOR_VERSION) + "."
             + QString::number(QWT3D_MINOR_VERSION) + "." + QString::number(QWT3D_PATCH_VERSION);
 
-    QString producer = QString("QwtPlot3D ") + version + " (beta) , (C) 2002";
-
-    // calculate actual year
-    time_t now;
-    struct tm *newtime;
-    time(&now);
-    newtime = gmtime(&now);
-    if (newtime && newtime->tm_year + 1900 > 2002)
-        producer += "-" + QString::number(newtime->tm_year + 1900);
-
-    producer += " Micha Bieber <krischnamurti@users.sourceforge.net>";
+    QString producer = QString("QwtPlot3D ") + version + " (beta)";
 
     FILE *fp = fopen(QWT3DLOCAL8BIT(fname), "wb");
     if (!fp) {
