@@ -8,7 +8,7 @@
 
 namespace Qwt3D {
 
-//! Provides EPS, PS, PDF and TeX output
+//! Provides EPS, PS, PDF, SVG, PGF and TeX output
 /*!
 
  */
