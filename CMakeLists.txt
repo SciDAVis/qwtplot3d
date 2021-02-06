@@ -105,6 +105,7 @@ set( HEADERS
   "include/qwt3d_multiplot.h"
   "include/qwt3d_io_gl2ps.h"
   )
+configure_file( "include/qwt3d_version.h.in" "qwt3d_version.h" @ONLY )
 
 add_library( qwtplot3d ${SRCS} ${HEADERS} )
 
@@ -121,7 +122,7 @@ else()
 endif()
 
 
-target_include_directories( qwtplot3d PUBLIC include )
+target_include_directories( qwtplot3d PUBLIC include ${CMAKE_CURRENT_BINARY_DIR} )
 
 if( NOT GL2PS_LIBRARY )
   enable_language( C )
