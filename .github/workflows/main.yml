@@ -32,11 +32,10 @@ jobs:
           make -j$(nproc) -C build
 
   MSVC:
-
-    runs-on: windows-latest
-
     name: MSVC_Qt_${{ matrix.qt_version }}
-
+    runs-on: windows-latest
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;nuget,GitHub,readwrite'
     strategy:
       fail-fast: false
       matrix:
@@ -59,19 +58,23 @@ jobs:
           version: ${{ matrix.qt_version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
-      - uses: lukka/run-vcpkg@v6
-        with:
-          vcpkgGitCommitId: 50ea8c0ab7aca3bb9245bba7fc877ad2f2a4464c
-          setupOnly: true
-      - name: Install VCPKG packages
+      - name: Setup NuGet Credentials
         run: |
-          Add-Content ${{ env.VCPKG_ROOT }}\triplets\x64-windows.cmake "set(VCPKG_BUILD_TYPE release)" 
-          ${{ env.VCPKG_ROOT }}\vcpkg install gl2ps --triplet x64-windows
+          & $(vcpkg fetch nuget | select -last 1) sources add `
+          -source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" `
+          -storepasswordincleartext `
+          -name "GitHub" `
+          -username ${{ github.repository_owner }} `
+          -password "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: vcpkg package restore
+        run: |
+          vcpkg install gl2ps --triplet x64-windows
 
       - name: Configuring
         run: |
           mkdir build; cd build
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}\scripts\buildsystems\vcpkg.cmake
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake
 
       - name: Building
         run: |
