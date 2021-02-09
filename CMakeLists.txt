@@ -31,14 +31,12 @@ if( APPLE )
   add_compile_definitions( GL_SILENCE_DEPRECATION )
 endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED )
-
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui REQUIRED )
-
-if( QT_VERSION_MAJOR VERSION_GREATER_EQUAL 6 )
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS OpenGLWidgets REQUIRED )
+find_package(Qt6 COMPONENTS Core Gui OpenGLWidgets QUIET )
+if( Qt6_FOUND )
+  set( QT_VERSION_MAJOR 6 )
 else()
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS OpenGL REQUIRED )
+  find_package(Qt5 COMPONENTS Core Gui OpenGL REQUIRED )
+  set( QT_VERSION_MAJOR 5 )
 endif()
 
 find_package( OpenGL COMPONENTS OpenGL REQUIRED )
