@@ -1,39 +1,5 @@
 *.user
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-*.so
+CMakeSettings.json
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Folders
-Debug/lib/
-Release/lib/
-Debug/tmp/
-Release/tmp/
 build/
-
-
+.vs/
