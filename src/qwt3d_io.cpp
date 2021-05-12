@@ -229,7 +229,7 @@ IO::Functor *IO::outputHandler(QString const &format)
 
 bool PixmapWriter::operator()(Plot3D *plot, QString const &fname)
 {
-    QImage im = plot->grabFramebuffer();
+    QImage im = plot->grabFrameBuffer();
 
     QImageWriter iio;
     iio.setFormat(QWT3DLOCAL8BIT(fmt_));
