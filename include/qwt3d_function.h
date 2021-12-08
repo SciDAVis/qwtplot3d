@@ -2,6 +2,7 @@
 #define qwt3d_function_h
 
 #include "qwt3d_gridmapping.h"
+#include <cstdio>
 
 namespace Qwt3D {
 
